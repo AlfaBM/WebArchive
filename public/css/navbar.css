@@ -1,0 +1,51 @@
+.navbar {
+background: linear-gradient(#19376D, #576CBC );
+border-bottom: 1px solid whitesmoke;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
+.navbar a:hover{
+color: #FEFF86!important;
+}
+
+.logo img {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+}
+
+.nama-logo h6{
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-weight: bold;
+color: whitesmoke;
+}
+
+.navbar .nav-item a::after{
+content: '';
+display: block;
+padding-bottom: 0.5px;
+border-bottom: 0.1px solid #FEFF86!important;
+transform: scaleX(0);
+transition: 0.2s linear;
+}
+
+.navbar .nav-item a:hover::after{
+transform: scaleX(0.5);
+}
+
+.navbar a {
+text-align: center;
+}
+
+/*Footer*/
+
+#footer {
+  text-align: center;
+  background: black;
+  color: white;
+  padding: 2%;
+}
+
+#footer h3{
+  font-size: 20px;
+}
