@@ -1,7 +1,7 @@
-@extends('template.admintemplate')
-@section('title', 'Content')
+@extends('template.admindashboard')
+@section('title', 'CONTENT')
 
-@section('section')
+@section('content')
     {{-- table konten --}}
     <div class="container pt-5">
         <div class="pt-5">
@@ -41,12 +41,12 @@
                                     @if (sizeof($data))
                                         <thead>
                                             <tr>
-                                                <th>no</th>
-                                                <th>judul</th>
-                                                <th>mapel</th>
-                                                <th>materi</th>
-                                                <th>file</th>
-                                                <th>action</th>
+                                                <th>No</th>
+                                                <th>Judul</th>
+                                                <th>Mapel</th>
+                                                <th>Materi</th>
+                                                <th>File</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
 

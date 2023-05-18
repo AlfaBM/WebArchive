@@ -36,6 +36,11 @@
   transition: 0.4s;
 }
 
+.cardes i{
+  padding-top: 20px;
+  font-size: 100px;
+}
+
 .cardes:hover {
   transform: scale(0.9, 0.9);
   box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 

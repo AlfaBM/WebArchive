@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINAU | ADMIN</title>
+    <title>@yield('title') | SINAU </title>
     <link rel="shortcut icon" type="image/png" href="/image/logo2.png" />
     <link rel="stylesheet" href="/css/admin.css">
     <!-- Boxicons CDN Link -->
@@ -15,15 +15,24 @@
     {{-- font awesome --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 </head>
+<style>
+    .user{
+        font-size: 50px;
+        text-align: center;
+    }
 
+    .dash {
+        background-color: #9BA4B5;
+    }
+</style>
 <body>
     <!--Awal Sidebar-->
     <div class="sidebar">
         <div class="logo-details">
-            <img src="/image/logo2.png" alt="logo">
-            <span class="logo_name">ADMIN SINAU</span>
+          <img src="/image/logo2.png" alt="logo">
+          <span class="logo_name">SINAU</span>
         </div>
-        <ul class="nav-links">
+        <ul class="nav-link">
             <li>
                 <a href="/admin" class="{{ request()->Is('admin*') ? 'active' : '' }}">
                     <i class='bx bx-grid-alt'></i>
@@ -36,26 +45,15 @@
                     <span class="links_name">Content</span>
                 </a>
             </li>
-            {{-- <li>
-                <a href="#">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">Team</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-message'></i>
-                    <span class="links_name">Messages</span>
-                </a>
-            </li> --}}
             <li class="log_out">
-                {{-- <a href="/logout">
-                    <i class='bx bx-log-out'></i>
-                    <span class="links_name">Log out</span>
-                </a> --}}
-                <form class="nav-link"action="/logout" method="POST">
+                <form class="nav-link" action="/logout" method="POST">
                     @csrf
-                    <button class="btn btn-outline-danger" type="submit">Logout</button>
+                    <div>
+                        <button class="btn btn-outline-light btn-md text-white" type="submit">
+                            <i class='bx bx-log-out'></i>
+                            <span class="logout">Logout</span>
+                        </button>
+                    </div>
                 </form>
             </li>
         </ul>
@@ -68,11 +66,7 @@
             <div class="sidebar-button">
                 <i class='bx bx-menu sidebarBtn'></i>
                 <span class="dashboard">
-                    @if (request()->routeIs('content.index', 'content.create'))
-                        Content
-                    @else
-                        Dashboard
-                    @endif
+                   @yield('title')
                 </span>
             </div>
             @if (request()->routeIs('content.index', 'content.create'))
@@ -81,21 +75,16 @@
                     @method('GET')
                     <div class="search-box d-flex">
                         <input type="text" placeholder="Search Judul..." name="search" value="{{ request('search') }}">
-                        <button class="btn btn-success" type="submit"><i class="fas fa-search fa-sm"></i></button>
-                        {{-- <i class='bx bx-search'></i> --}}
-                        {{-- <button class="btn btn-outline-dark" type="submit">Search</button> --}}
+                        <button class="btn btn-success" type="submit"><i class="fas fa-search fa-sm"></i></button>   
                     </div>
                 </form>
             @endif
-            <div class="profile-details">
-                <img src="/image/profile/profile-ilyas.jpeg" alt="profil">
-                <span class="admin_name">Ilyasa Nanda Rahmadianto</span>
-                <i class='bx bx-chevron-down'></i>
-            </div>
+            {{-- <div class="profile-details">
+                <span class="admin_name">Selamat Datang {{$profile->nama_staff}}</span>
+            </div> --}}
         </nav>
 
-        {{-- @include('test') --}}
-        @yield('section')
+        @yield('content')
 
     </section>
     <!--Akhir Admin Section-->

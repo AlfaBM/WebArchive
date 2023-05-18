@@ -1,5 +1,5 @@
 @extends('template.indextemplate')
-@section('title', 'Team')
+@section('title', 'TEAM')
 
 @section('section')
   <!--Awal Team-->

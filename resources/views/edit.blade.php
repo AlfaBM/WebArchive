@@ -1,7 +1,7 @@
-@extends('template.admintemplate')
+@extends('template.admindashboard')
 @section('title', 'Content')
 
-@section('section')
+@section('content')
     <div class="container pt-5">
         <div class="card mb-3 mt-5">
             <div class="container">

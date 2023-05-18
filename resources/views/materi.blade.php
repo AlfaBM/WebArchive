@@ -1,5 +1,5 @@
 @extends('template.indextemplate')
-@section('title', 'Materi')
+@section('title', 'MATERI')
 
 @section('section')
   <!--Isi Content-->
