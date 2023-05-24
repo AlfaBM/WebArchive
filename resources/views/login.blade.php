@@ -17,6 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 mx-auto">
+                
                     @if (Session::has('failed'))
                         <div class="alert alert-danger text-center" role="alert">
                             {{ Session::get('failed') }}
@@ -25,6 +26,9 @@
                     <form action="/login" method="post">
                         @csrf
                         <div class="card card-body">
+                            <div>
+                                <h1 class="text-center">LOGIN ADMIN</h1>
+                            </div>
                             <div class="form-group required">
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control text-lowercase" id="username" required=""

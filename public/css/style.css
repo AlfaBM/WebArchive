@@ -1,10 +1,10 @@
 body{
-  background: #ffffff !important;
+  background: #2F55B8 !important;
   font-family: 'Muli', sans-serif;
   
 }
 h1{
-  color: #fff;
+  color: #000000;
   padding-bottom: 2rem;
   font-weight: bold;
 }
@@ -23,6 +23,10 @@ a:hover{
     outline: 0;
     box-shadow: none;
 
+}
+
+.container .card-body{
+  background-color: #c6ff0c;
 }
 
 .btn{
