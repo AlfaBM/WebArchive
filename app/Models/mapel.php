@@ -11,11 +11,13 @@ class mapel extends Model
 {
     protected $table = 'mapel';
 
+    protected $primaryKey = 'id_mapel';
+
     public function book(){
         return $this->belongsTo(book::class);
     }
 
      public function scopeMapelget(){
-        return mapel::all();
+        return mapel::paginate(8);;
      }
 }

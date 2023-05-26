@@ -54,6 +54,14 @@ class viewcontroller extends Controller
         ]);
     }
 
+    public function pdfstream($id)
+    {
+        $data = book::where('id_buku', $id)->first();
+        return view('/pdfview', [
+            'file' => $data
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

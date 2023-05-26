@@ -17,7 +17,7 @@
             @include('modal.materi')
             @include('modal.create')
 
-            <div class="card ">
+            <div class="card">
                 <div class="p-1">
                     <div class="card-body">
                         <div class="text-start d-flex" style="gap: 10px;">
@@ -90,25 +90,117 @@
                                 @endif
 
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container p-5">
 
+            <div class="card mt-3">
+                <div class="p-1">
+                    <div class="card-body">
+                        <div class="text-start d-flex" style="gap: 10px;">
+                            <i class="fas fa-list"></i>
+                            <p>List Mata Pelajaran</p>
+                        </div>
+                        <div class="container text-center">
+                            <div class="container  table-responsive-sm table-responsive-md table-responsive-lg">
+                                <table class="table table-stripped table-hover table-sm">
+
+
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Gambar</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    @foreach ($data2 as $item)
+                                        <tr class="data-row">
+
+                                            <td>{{ $loop->iteration + $data->firstItem() - 1 }}</td>
+                                            <td style="word-wrap: break-word; max-width:5vh">
+                                                {{ $item->nama_mapel }}
+                                            </td>
+                                            <td> <a href="{{ asset('storage/' . $item->gambar) }}"
+                                                    target="_blank">Gambar</a> </td>
+                                            <td>
+                                                <a class="btn" href="{{ route('editmapel', $item->id_mapel) }}"><i
+                                                        class="far fa-edit fa-lg" style="color: #04ff00;"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </table>
+                                <div class="page">
+                                    {{ $data2->links() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="p-1">
+                    <div class="card-body">
+                        <div class="text-start d-flex" style="gap: 10px;">
+                            <i class="fas fa-list"></i>
+                            <p>List Materi</p>
+                        </div>
+                        <div class="container text-center">
+                            <div class="container  table-responsive-sm table-responsive-md table-responsive-lg">
+                                <table class="table table-stripped table-hover table-sm">
+
+
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    @foreach ($data3 as $item)
+                                        <tr class="data-row">
+
+                                            <td>{{ $loop->iteration + $data->firstItem() - 1 }}</td>
+                                            <td style="word-wrap: break-word; max-width:5vh">
+                                                {{ $item->nama_materi }}
+                                            </td>
+                                            <td>
+                                                <a class="btn" href="{{ route('editmateri', $item->id_materi) }}"><i
+                                                        class="far fa-edit fa-lg" style="color: #04ff00;"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </table>
+                                <div class="page">
+                                    {{ $data3->links() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
+        <div class="container p-5">
+
+        </div>
+
     </div>
-    
-   
-    <script type="text/javascript">
-        if(count($errors) > 0){
+    </div>
+
+
+    <script>
+        if (count($errors) > 0) {
             $(document).ready(function() {
-             $('#modalcreate').modal('show');
-        })};
+                $('#modalcreate').modal('show');
+            })
+        };
     </script>
 
 @endsection
-

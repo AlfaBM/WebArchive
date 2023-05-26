@@ -12,7 +12,7 @@
                             @if ($item2->id_materi == $item->materi->id_materi)
                                 <ul>
                                     <li>
-                                        <h2>{{ $item2->judul }}</h2>
+                                        <a href="{{ url('/pdf', $item2->id_buku) }}" target="_blank">{{ $item2->judul }}</a>
                                     </li>
                                 </ul>
                             @endif

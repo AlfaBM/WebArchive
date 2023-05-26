@@ -83,8 +83,8 @@ class contentcontroller extends Controller
                 'mapel' => 'required',
                 'materi' => 'required'
             ]);
-           
-    
+
+
             $path = $request->file('file')->storeAs('public/file', time() . '.pdf');
             // dd($path);
             $filepath = preg_replace('/public\//', '', $path);
@@ -128,6 +128,21 @@ class contentcontroller extends Controller
         ]);
     }
 
+    public function editmapel($id)
+    {
+        $data = mapel::where('id_mapel', $id)->first();
+        return view('/editmapel', [
+            'data' => $data
+        ]);
+    }
+
+    public function editmateri($id)
+    {
+        $data = materi::where('id_materi', $id)->first();
+        return view('/editmateri', [
+            'data' => $data
+        ]);
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -135,9 +150,56 @@ class contentcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function patchmateri(Request $request, $id)
+    {
+        $materiup = materi::where('id_materi', $id)->first();
+
+        $request->validate([
+            'nama-materi' => 'required',
+        ]);
+
+        $materiup->nama_materi = $request->input('nama-materi');
+        $materiup->save();
+
+        session()->flash('succestabl', 'Data berhasil diupdate');
+        return to_route('content.index');
+    }
+
+    public function patchmapel(Request $request, $id)
+    {
+
+        $mapelup = mapel::where('id_mapel', $id)->first();
+
+        $request->validate([
+            'gambar' => 'mimes:jpg|JPG|png|PNG',
+        ]);
+
+        if($request->file('gambar')){
+            if($request->input('nama-mapel') == $mapelup->nama_mapel){
+                $filename = $mapelup->nama_mapel;
+            }else{
+                $filename = $request->input('nama-mapel');
+                File::delete(public_path('storage/' . $mapelup->gambar));
+            }
+
+            $path = $request->file('gambar-mapel')->storeAs('public/gambar', $filename . '.jpg');
+            $filepath = preg_replace('/public\//', '', $path);
+
+            $mapelup->gambar = $filepath;
+        }
+        
+        $mapelup->nama_mapel = $request->input('nama-mapel');
+        $mapelup->save();
+
+        session()->flash('succestabl', 'Data berhasil diupdate');
+        return to_route('content.index');
+    }
+
     public function update(Request $request, $id)
     {
-        $bookup = book::where('id_buku', $id)->first();;
+        $bookup = book::where('id_buku', $id)->first();
+        ;
         // dd($request);
         $request->validate([
             'file' => 'mimes:pdf',
@@ -145,7 +207,7 @@ class contentcontroller extends Controller
             'materi' => 'required'
         ]);
 
-        if($request->file('file')){
+        if ($request->file('file')) {
             $fileold = $bookup->data;
             // dd($fileold);
 
@@ -155,19 +217,20 @@ class contentcontroller extends Controller
                 $filenew
             );
             // dd($filenew);
-            $newname = $filenew[1].'.'. $filenew[2];
+            $newname = $filenew[1] . '.' . $filenew[2];
             $newpath = $request->file('file')->storeAs('public/file', $newname);
             $filepath = preg_replace('/public\//', '', $newpath);
             $bookup->data = $filepath;
         }
-        
+
         $bookup->judul = $request->input('judul');
         $bookup->id_mapel = $request->input('mapel');
         $bookup->id_materi = $request->input('materi');
         // dd($bookup);
         $bookup->save();
 
-        session()->flash('succestabl', 'Data berhasil diedit');
+
+        session()->flash('succestabl', 'Data berhasil diupdate');
         return to_route('content.index');
     }
 

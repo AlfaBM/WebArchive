@@ -9,6 +9,8 @@ class materi extends Model
 {
     protected $table = 'materi';
 
+    protected $primaryKey = 'id_materi';
+
     public function book()
     {
         return $this->belongsTo(book::class);
@@ -16,6 +18,6 @@ class materi extends Model
 
     public function scopeMateriget()
     {
-        return materi::all();
+        return materi::paginate(8);;
     }
 }

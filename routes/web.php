@@ -52,6 +52,12 @@ Route::post('/login', [authcontroller::class, 'autentikasi']);
 Route::post('/logout', [authcontroller::class, 'logout']);
 
 Route::resource('/content', contentcontroller::class)->middleware([adminMiddleware::class]);
+Route::get('/editmapel/{content}/edit', [contentcontroller::class, 'editmapel'])->middleware([adminMiddleware::class])->name('editmapel');
+Route::put('/editmapel/{content}', [contentcontroller::class, 'patchmapel'])->middleware([adminMiddleware::class])->name('patchmapel');
+Route::get('/editmateri/{content}/edit', [contentcontroller::class, 'editmateri'])->middleware([adminMiddleware::class])->name('editmateri');
+Route::put('/editmateri/{content}', [contentcontroller::class, 'patchmateri'])->middleware([adminMiddleware::class])->name('patchmateri');
+
 Route::resource('/submateri', viewcontroller::class);
 
 Route::get('/view/{id}',[contentcontroller::class, 'pdfstream'])->middleware([adminMiddleware::class]);
+Route::get('/pdf/{id}',[viewcontroller::class, 'pdfstream']);
