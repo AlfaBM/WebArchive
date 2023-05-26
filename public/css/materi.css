@@ -10,7 +10,7 @@
   margin: 30px;
 }
 
-.container .card .box {
+/* .container .card .box {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -26,7 +26,7 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   transition: 0.5s;
   overflow: hidden;
-}
+} */
 
 .container .card1 .box {
   position: absolute;

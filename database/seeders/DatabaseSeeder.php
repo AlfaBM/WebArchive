@@ -32,16 +32,17 @@ class DatabaseSeeder extends Seeder
             ]);
 
             mapel::create([
-                'nama_mapel' => 'bokep'
+                'nama_mapel' => 'Bahasa Indonesia',
+                'gambar' => 'gambar/bahasa.jpg'
             ]);
 
             materi::create([
-                'nama_materi' => 'porn'
+                'nama_materi' => 'Membaca'
             ]);
             
             book::create([
                 'judul' => 'test',
-                'data' => 'fhorno.pdf',
+                'data' => 'test.pdf',
                 'id_mapel' => 1,
                 'id_materi' => 1
             ]);

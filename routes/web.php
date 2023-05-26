@@ -1,10 +1,14 @@
 <?php
 
-use App\Http\Controllers\authcontroller;
-use App\Http\Controllers\contentcontroller;
-use App\Http\Controllers\mapelcontroller;
+use App\Models\book;
+use App\Models\mapel;
+use App\Models\materi;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\authcontroller;
+use App\Http\Controllers\viewcontroller;
 use App\Http\Middleware\adminMiddleware;
+use App\Http\Controllers\mapelcontroller;
+use App\Http\Controllers\contentcontroller;
 use Illuminate\Routing\Controllers\Middleware;
 
 /*
@@ -23,7 +27,9 @@ Route::get('/', function () {
 });
 
 Route::get('/materi', function () {
-    return view('materi');
+    return view('materi', [
+        'data' => mapel::all()
+    ]);
 });
 
 Route::get('/team', function () {
@@ -31,7 +37,10 @@ Route::get('/team', function () {
 });
 
 Route::get('/admin', function () {
-    return view('admin');
+    return view('admin', [
+        'mapel' => mapel::all(),
+        'materi' => materi::all()
+    ]);
 })->middleware([adminMiddleware::class]);
 
 Route::get('/content', function () {
@@ -43,5 +52,6 @@ Route::post('/login', [authcontroller::class, 'autentikasi']);
 Route::post('/logout', [authcontroller::class, 'logout']);
 
 Route::resource('/content', contentcontroller::class)->middleware([adminMiddleware::class]);
+Route::resource('/submateri', viewcontroller::class);
 
 Route::get('/view/{id}',[contentcontroller::class, 'pdfstream'])->middleware([adminMiddleware::class]);

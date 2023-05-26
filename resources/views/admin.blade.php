@@ -10,7 +10,7 @@
                     <div class='user'>
                         <i class='bx bxs-book'></i>
                     </div>
-                        <h1 class="card-title text-center">7</h1>
+                        <h1 class="card-title text-center">{{$mapel->count()}}</h1>
                         <p class="card-text text-center">Mata Pelajaran</p>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <div class='user'>
                         <i class='bx bxs-book-content'></i>
                     </div>
-                        <h1 class="card-title text-center">135</h1>
+                        <h1 class="card-title text-center">{{$materi->count()}}</h1>
                         <p class="card-text text-center">Materi</p>
                 </div>
              </div>

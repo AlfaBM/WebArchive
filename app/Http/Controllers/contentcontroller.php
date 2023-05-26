@@ -57,6 +57,10 @@ class contentcontroller extends Controller
             $mapel = new mapel;
 
             $mapel->nama_mapel = $request->input('nama-mapel');
+            $path = $request->file('gambar-mapel')->storeAs('public/gambar', $request->input('nama-mapel') . '.jpg');
+            $filepath = preg_replace('/public\//', '', $path);
+
+            $mapel->gambar = $filepath;
             $mapel->save();
 
             session()->flash('succes', 'Mapel berhasil ditambah');
@@ -80,7 +84,9 @@ class contentcontroller extends Controller
                 'materi' => 'required'
             ]);
            
+    
             $path = $request->file('file')->storeAs('public/file', time() . '.pdf');
+            // dd($path);
             $filepath = preg_replace('/public\//', '', $path);
 
             $book->judul = $request->input('judul');
