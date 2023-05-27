@@ -15,41 +15,41 @@
                         <label for="mapel">Mata Pelajaran</label>
                         <select type="text" class="form-select @error('mapel') is-invalid @enderror" name="mapel"
                             id="mapel">
-                            @error('mapel')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
                             <option value="">pilih Mapel</option>
                             @foreach ($data2 as $item)
                                 <option value="{{ $item->id_mapel }}">{{ $item->nama_mapel }}
                                 </option>
                             @endforeach
                         </select>
+                        @error('mapel')
+                            <div class="invalid-feedback">
+                                <p>Silahkan Pilih Mapel</p>
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="materi">Materi</label>
                         <select type="text" class="form-select @error('materi') is-invalid @enderror" name="materi"
                             id="materi">
-                            @error('materi')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
                             <option value="">pilih Materi</option>
                             @foreach ($data3 as $item)
                                 <option value="{{ $item->id_materi }}">{{ $item->nama_materi }}
                                 </option>
                             @endforeach
                         </select>
+                        @error('materi')
+                            <div class="invalid-feedback">
+                                <p>Silahkan Pilih Materi</p>
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="file">File</label>
                         <input class="form-control @error('file') is-invalid @enderror" type="file" name="file"
-                            id="formfile" required>
+                            id="formfile" accept=".pdf" required>
                         @error('file')
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                <p>File Harus Berupa : pdf</p>
                             </div>
                         @enderror
                     </div>

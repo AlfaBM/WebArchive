@@ -29,10 +29,10 @@
                                             <div class="mb-3">
                                                 <label for="Gambar">Gambar</label>
                                                 <input class="form-control @error('Gambar') is-invalid @enderror"
-                                                    type="file" name="Gambar" id="Gambar">
+                                                    type="file" name="Gambar" id="Gambar" accept=".jpg,.png">
                                                 @error('Gambar')
                                                     <div class="invalid-feedback">
-                                                        {{ $message }}
+                                                        <p>Gambar Harus Berupa : jpg,png</p>
                                                     </div>
                                                 @enderror
                                             </div>

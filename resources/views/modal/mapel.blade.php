@@ -8,13 +8,19 @@
                 </div>
                 <div class="modal-body">
                     <div class="container text-start">
-                        <div class="mb-2 col-6">
+                        <div class="mb-2">
                             <label for="nama-mapel">Nama Mata Pelajaran</label>
                             <input type="text" class="form-control" id="nama-mapel" name="nama-mapel" required>
                         </div>
-                        <div class="mb-2 col-6">
+                        <div class="mb-2">
                             <label for="gambar-mapel">Gambar</label>
-                            <input type="file" class="form-control" id="gambar-mapel" name="gambar-mapel" required>
+                            <input type="file" class="form-control @error('gambar-mapel') is-invalid @enderror"
+                                id="gambar-mapel" name="gambar-mapel" accept=".jpg,.png"required>
+                            @error('gambar-mapel')
+                                <div class="invalid-feedback">
+                                    <p>Gambar Harus Berupa : jpg,png</p>
+                                </div>
+                            @enderror
                         </div>
                     </div>
                 </div>

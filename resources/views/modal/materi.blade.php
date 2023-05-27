@@ -8,7 +8,7 @@
                  </div>
                  <div class="modal-body">
                      <div class="container text-start">
-                         <div class="mb-2 col-6">
+                         <div class="mb-2">
                              <label for="nama-materi">Nama Materi</label>
                              <input type="text" class="form-control" id="nama-materi" name="nama-materi" required>
                          </div>

@@ -56,8 +56,13 @@ class contentcontroller extends Controller
         if ($request->input("nama-mapel")) {
             $mapel = new mapel;
 
+            $validasi = $request->validate([
+                'gambar-mapel' => 'mimes:jpg,png',
+            ]);
+
             $mapel->nama_mapel = $request->input('nama-mapel');
-            $path = $request->file('gambar-mapel')->storeAs('public/gambar', $request->input('nama-mapel') . '.jpg');
+            $extension = $request->file('gambar-mapel')->getClientOriginalExtension();
+            $path = $request->file('gambar-mapel')->storeAs('public/gambar', $request->input('nama-mapel') . '.' .$extension);
             $filepath = preg_replace('/public\//', '', $path);
 
             $mapel->gambar = $filepath;
@@ -171,19 +176,21 @@ class contentcontroller extends Controller
 
         $mapelup = mapel::where('id_mapel', $id)->first();
 
-        $request->validate([
-            'gambar' => 'mimes:jpg|JPG|png|PNG',
+        $validasi = $request->validate([
+            'Gambar' => 'mimes:jpg,png',
         ]);
 
-        if($request->file('gambar')){
+        if($request->file('Gambar')){
             if($request->input('nama-mapel') == $mapelup->nama_mapel){
                 $filename = $mapelup->nama_mapel;
+                File::delete(public_path('storage/' . $mapelup->gambar));
             }else{
                 $filename = $request->input('nama-mapel');
                 File::delete(public_path('storage/' . $mapelup->gambar));
             }
 
-            $path = $request->file('gambar-mapel')->storeAs('public/gambar', $filename . '.jpg');
+            $extension = $request->file('Gambar')->getClientOriginalExtension();
+            $path = $request->file('Gambar')->storeAs('public/gambar', $filename . '.' . $extension);
             $filepath = preg_replace('/public\//', '', $path);
 
             $mapelup->gambar = $filepath;
@@ -242,6 +249,7 @@ class contentcontroller extends Controller
      */
     public function destroy($id)
     {
+        // dd('hehe');
         $content = book::where('id_buku', $id);
         // dd($content->first());
         $file = $content->first();

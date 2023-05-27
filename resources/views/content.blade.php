@@ -12,6 +12,7 @@
             <a type="button" class="btn btn-primary mb-2 ms-2 me-2" data-bs-toggle="modal"
                 data-bs-target="#modalcreate">Tambah
                 Data</a>
+
             {{-- modal --}}
             @include('modal.mapel')
             @include('modal.materi')
@@ -61,18 +62,21 @@
                                                 <td> <a href="{{ url('/view', $item->id_buku) }}" target="_blank">pdf</a>
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('content.destroy', $item->id_buku) }}"
-                                                        method="POST">
-                                                        <a class="btn"
-                                                            href="{{ route('content.edit', $item->id_buku) }}"><i
-                                                                class="far fa-edit fa-lg" style="color: #04ff00;"></i></a>
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn"
-                                                            onclick="return confirm('Ingin menghapus data ?')"><i
+                                                    {{-- <form action="{{ route('content.destroy', $item->id_buku) }}"
+                                                        method="POST"> --}}
+                                                    <a class="btn" href="{{ route('content.edit', $item->id_buku) }}"><i
+                                                            class="far fa-edit fa-lg" style="color: #04ff00;"></i></a>
+                                                    {{-- @csrf
+                                                        @method('DELETE') --}}
+                                                    {{-- onclick="return confirm('Ingin menghapus data ?')" --}}
+                                                    <a type="button" class="btn"
+                                                        data-bs-toggle="modal" data-bs-target="#confirmdel"><i
+                                                            class="fas fa-trash-alt fa-lg" style="color: #ff2e2e;"></i></a>
+                                                    @include('modal.confirmdel')
+                                                    {{-- <button type="submit" class="btn" confirm="Are your sure?"><i
                                                                 class="fas fa-trash-alt fa-lg"
                                                                 style="color: #ff2e2e;"></i></button>
-                                                    </form>
+                                                    </form> --}}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -194,13 +198,23 @@
     </div>
     </div>
 
-
-    <script>
-        if (count($errors) > 0) {
-            $(document).ready(function() {
-                $('#modalcreate').modal('show');
-            })
-        };
-    </script>
-
 @endsection
+
+@push('sripct')
+    @if ($errors->has('mapel') || $errors->has('materi') || $errors->has('file'))
+        <script>
+            window.onload = function() {
+                let myModal = new bootstrap.Modal(document.getElementById('modalcreate'), {});
+                myModal.show();
+            }
+        </script>
+    @endif
+    @if ($errors->has('gambar-mapel'))
+        <script>
+            window.onload = function() {
+                let myModal = new bootstrap.Modal(document.getElementById('modalmapel'), {});
+                myModal.show();
+            }
+        </script>
+    @endif
+@endpush
