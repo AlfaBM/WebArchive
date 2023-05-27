@@ -4,9 +4,13 @@ body{
   
 }
 h1{
-  color: #000000;
+  color: #fff;
   padding-bottom: 2rem;
   font-weight: bold;
+}
+
+.container .card-body{
+  background-color: pink;
 }
 a{
   color: #333;

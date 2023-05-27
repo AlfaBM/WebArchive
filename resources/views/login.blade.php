@@ -12,8 +12,6 @@
 <body>
 
     <div class="pt-5">
-
-
         <div class="container">
             <div class="row">
                 <div class="col-md-5 mx-auto">
@@ -27,9 +25,10 @@
                         @csrf
                         <div class="card card-body">
                             <div>
-                                <h1 class="text-center">LOGIN ADMIN</h1>
+                                <h1 class="text-center">Login Admin</h1>
                             </div>
                             <div class="form-group required">
+                                
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control text-lowercase" id="username" required=""
                                     name="username" value="">
