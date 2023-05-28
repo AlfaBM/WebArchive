@@ -43,6 +43,8 @@
               </span>
               <h4>Ilyasa Nanda Rahmadianto</h4>
               <span>Mahasiswa</span>
+              <br>
+              <span>Institut Teknologi Adhi Tama Surabaya</span>
             </div>
           </div>
         </div>
@@ -76,6 +78,8 @@
               </span>
               <h4>Alfa Berlio Muda</h4>
               <span>Mahasiswa</span>
+              <br>
+              <span>Institut Teknologi Adhi Tama Surabaya</span>
             </div>
           </div>
         </div>
@@ -109,6 +113,8 @@
               </span>
               <h4>Victoria Lucky Mahendra</h4>
               <span>Mahasiswa</span>
+              <br>
+              <span>Institut Teknologi Adhi Tama Surabaya</span>
             </div>
           </div>
         </div>
