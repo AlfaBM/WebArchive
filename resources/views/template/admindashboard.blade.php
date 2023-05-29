@@ -64,7 +64,7 @@
 
     <!--Admin Section-->
     <section class="home-section">
-        <nav>
+        <nav class="nav-sec">
             <div class="sidebar-button">
                 <i class='bx bx-menu sidebarBtn'></i>
                 <span class="dashboard">
@@ -72,7 +72,7 @@
                 </span>
             </div>
             @if (request()->routeIs('content.index', 'content.create'))
-                <form action="{{ route('content.index') }}" method="POST">
+                <form action="{{ route('content.index') }}" method="GET">
                     @csrf
                     @method('GET')
                     <div class="search-box d-flex">

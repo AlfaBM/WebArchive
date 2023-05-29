@@ -128,7 +128,7 @@
   width: calc(100% - 60px);
   left: 60px;
 }
-.home-section nav{
+.home-section .nav-sec{
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -144,29 +144,29 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
 }
-.sidebar.active ~ .home-section nav{
+.sidebar.active ~ .home-section .nav-sec{
   left: 60px;
   width: calc(100% - 60px);
 }
-.home-section nav .sidebar-button{
+.home-section .nav-sec .sidebar-button{
   display: flex;
   align-items: center;
   font-size: 24px;
   font-weight: 500;
 }
-nav .sidebar-button i{
+.nav-sec .sidebar-button i{
   font-size: 35px;
   margin-right: 10px;
 }
 
-.home-section nav .search-box{
+.home-section .nav-sec .search-box{
   position: relative;
   height: 50px;
   max-width: 550px;
   width: 100%;
   margin: 0 20px;
 }
-nav .search-box input{
+.nav-sec .search-box input{
   height: 100%;
   width: 100%;
   outline: none;
@@ -176,7 +176,7 @@ nav .search-box input{
   font-size: 18px;
   padding: 0 15px;
 }
-nav .search-box .bx-search{
+.nav-sec .search-box .bx-search{
   position: absolute;
   height: 40px;
   width: 40px;
@@ -191,7 +191,7 @@ nav .search-box .bx-search{
   font-size: 22px;
   transition: all 0.4 ease;
 }
-.home-section nav .profile-details{
+.home-section .nav-sec .profile-details{
   display: flex;
   align-items: center;
   background: #F5F6FA;
@@ -201,13 +201,13 @@ nav .search-box .bx-search{
   min-width: 190px;
   padding: 0 15px 0 2px;
 }
-nav .profile-details img{
+.nav-sec .profile-details img{
   height: 40px;
   width: 40px;
   border-radius: 6px;
   object-fit: cover;
 }
-nav .profile-details .admin_name{
+.nav-sec .profile-details .admin_name{
   font-size: 15px;
   font-weight: 400;
   color: #333;
@@ -243,11 +243,11 @@ nav .profile-details .admin_name{
     overflow: hidden;
     left: 220px;
   }
-  .home-section nav{
+  .home-section .nav-sec{
     width: calc(100% - 60px);
     left: 60px;
   }
-  .sidebar.active ~ .home-section nav{
+  .sidebar.active ~ .home-section .nav-sec{
     width: calc(100% - 220px);
     left: 220px;
   }
@@ -262,19 +262,19 @@ nav .profile-details .admin_name{
   
 }
 @media (max-width: 700px) {
-  nav .profile-details .admin_name,
-  nav .profile-details i{
+  .nav-sec .profile-details .admin_name,
+  .nav-sec .profile-details i{
     /* display: none; */
     font-size: 10px;
     padding-left: 0;
   }
 
-  .home-section nav .profile-details{
+  .home-section .nav-sec .profile-details{
     max-width: 175px;
     padding: 0;
   }
 
-  nav .sidebar-button .dashboard{
+  .nav-sec .sidebar-button .dashboard{
     font-size: medium;
   }
 
@@ -282,7 +282,7 @@ nav .profile-details .admin_name{
     font-size: 12px;
   }
 
-  .home-section nav .profile-details{
+  .home-section .nav-sec .profile-details{
     height: 50px;
     min-width: 40px;
   }
@@ -294,7 +294,7 @@ nav .profile-details .admin_name{
     width: 100%;
     margin-bottom: 15px;
   }
-  .sidebar.active ~ .home-section nav .profile-details{
+  .sidebar.active ~ .home-section .nav-sec .profile-details{
     display: none;
   }
 }
@@ -313,17 +313,17 @@ nav .profile-details .admin_name{
     left: 60px;
     width: calc(100% - 60px);
   }
-  .home-section nav{
+  .home-section .nav-sec{
     width: 100%;
     left: 0;
   }
-  .sidebar.active ~ .home-section nav{
+  .sidebar.active ~ .home-section .nav-sec{
     left: 60px;
     width: calc(100% - 60px);
   }
 }
 
- .page nav{
+ .page .nav-sec{
     min-height: 15vh;
     /* width: 150px; */
     /* justify-content: center; */

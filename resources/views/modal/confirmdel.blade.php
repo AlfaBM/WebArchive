@@ -1,7 +1,7 @@
 <form action="{{ route('content.destroy', $item->id_buku) }}" method="POST">
     @csrf
     @method('DELETE')
-    <div class="modal fade text-start" id="confirmdel" tabindex="-1" aria-hidden="true">
+    <div class="modal fade text-start" id="confirmdel{{$item->id_buku}}" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body text-center">

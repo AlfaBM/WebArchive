@@ -19,9 +19,9 @@ class contentcontroller extends Controller
     {
         // dd($request->input('search'));
         if ($request->input('search')) {
-            $data = book::where(('judul'), 'LIKE', '%' . $request->input('search') . '%')->paginate(8);
+            $data = book::where(('judul'), 'LIKE', '%' . $request->input('search') . '%')->paginate(8, ['*'], 'buku');
         } else {
-            $data = book::Display()->paginate(8);
+            $data = book::Display()->paginate(8, ['*'], 'buku');
         }
         // dd($data);
         $data2 = mapel::Mapelget();
@@ -30,7 +30,9 @@ class contentcontroller extends Controller
         return view('/content', [
             'data' => $data,
             'data2' => $data2,
-            'data3' => $data3
+            'data3' => $data3,
+            'select1' => mapel::all(),
+            'select2' => materi::all()
         ]);
     }
 
@@ -88,7 +90,7 @@ class contentcontroller extends Controller
                 'mapel' => 'required',
                 'materi' => 'required'
             ]);
-
+            
 
             $path = $request->file('file')->storeAs('public/file', time() . '.pdf');
             // dd($path);

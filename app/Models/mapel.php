@@ -18,6 +18,6 @@ class mapel extends Model
     }
 
      public function scopeMapelget(){
-        return mapel::paginate(8);;
+        return mapel::paginate(8, ['*'], 'mapel');;
      }
 }

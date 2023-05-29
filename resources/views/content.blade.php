@@ -70,7 +70,7 @@
                                                         @method('DELETE') --}}
                                                     {{-- onclick="return confirm('Ingin menghapus data ?')" --}}
                                                     <a type="button" class="btn"
-                                                        data-bs-toggle="modal" data-bs-target="#confirmdel"><i
+                                                        data-bs-toggle="modal" data-bs-target="#confirmdel{{$item->id_buku}}"><i
                                                             class="fas fa-trash-alt fa-lg" style="color: #ff2e2e;"></i></a>
                                                     @include('modal.confirmdel')
                                                     {{-- <button type="submit" class="btn" confirm="Are your sure?"><i
@@ -82,8 +82,8 @@
                                         @endforeach
 
                                 </table>
-                                <div class="page">
-                                    {{ $data->links() }}
+                                <div class="d-flex">
+                                    {{ $data->appends(['mapel' => $data2->currentPage(), 'materi' =>$data3->currentPage()])->withQueryString()->links() }}
                                 </div>
                             @else
                                 @if (request('search'))
@@ -123,7 +123,7 @@
                                     @foreach ($data2 as $item)
                                         <tr class="data-row">
 
-                                            <td>{{ $loop->iteration + $data->firstItem() - 1 }}</td>
+                                            <td>{{ $loop->iteration + $data2->firstItem() - 1 }}</td>
                                             <td style="word-wrap: break-word; max-width:5vh">
                                                 {{ $item->nama_mapel }}
                                             </td>
@@ -137,8 +137,8 @@
                                     @endforeach
 
                                 </table>
-                                <div class="page">
-                                    {{ $data2->links() }}
+                                <div class="d-flex">
+                                    {{ $data2->appends(['materi' => $data3->currentPage(), 'buku' =>$data->currentPage()])->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                                     @foreach ($data3 as $item)
                                         <tr class="data-row">
 
-                                            <td>{{ $loop->iteration + $data->firstItem() - 1 }}</td>
+                                            <td>{{ $loop->iteration + $data3->firstItem() - 1 }}</td>
                                             <td style="word-wrap: break-word; max-width:5vh">
                                                 {{ $item->nama_materi }}
                                             </td>
@@ -181,8 +181,8 @@
                                     @endforeach
 
                                 </table>
-                                <div class="page">
-                                    {{ $data3->links() }}
+                                <div class="d-flex">
+                                    {{ $data3->appends(['mapel' => $data2->currentPage(), 'buku' =>$data->currentPage()])->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>

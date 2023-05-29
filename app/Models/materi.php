@@ -18,6 +18,6 @@ class materi extends Model
 
     public function scopeMateriget()
     {
-        return materi::paginate(8);;
+        return materi::paginate(8, ['*'], 'materi');;
     }
 }

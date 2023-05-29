@@ -16,7 +16,7 @@
                         <select type="text" class="form-select @error('mapel') is-invalid @enderror" name="mapel"
                             id="mapel">
                             <option value="">pilih Mapel</option>
-                            @foreach ($data2 as $item)
+                            @foreach ($select1 as $item)
                                 <option value="{{ $item->id_mapel }}">{{ $item->nama_mapel }}
                                 </option>
                             @endforeach
@@ -32,7 +32,7 @@
                         <select type="text" class="form-select @error('materi') is-invalid @enderror" name="materi"
                             id="materi">
                             <option value="">pilih Materi</option>
-                            @foreach ($data3 as $item)
+                            @foreach ($select2 as $item)
                                 <option value="{{ $item->id_materi }}">{{ $item->nama_materi }}
                                 </option>
                             @endforeach
